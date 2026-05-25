@@ -1,1 +1,0 @@
-print('Nếu như muốn sử dụng dấu đặc  biệt hãy dùng dấu "\\" trước nó');
