@@ -1,5 +1,14 @@
 
-patient_name = input('Họ tên bệnh nhân: ').split();
+""" 
+Input:
+Họ và tên bệnh nhân (patient_name): Kiểu chuỗi (str). Không được để trống hoặc chỉ chứa toàn khoảng trắng.
+Tuổi bệnh nhân (patient_age): Kiểu số nguyên (int). Phải nằm trong phạm vi từ 0 đến 150.
+Output:
+Nếu dữ liệu hợp lệ: In Phiếu khám bệnh điện tử (Họ tên, Tuổi, Kết quả phân luồng).
+Nếu dữ liệu không hợp lệ: Chỉ in duy nhất thông báo lỗi và lập tức dừng chương trình (không phân luồng, không in phiếu).
+"""
+
+patient_name = input('Họ tên bệnh nhân: ');
 patient_age = int(input('Tuổi bệnh nhân: '));
 
 result = '';
