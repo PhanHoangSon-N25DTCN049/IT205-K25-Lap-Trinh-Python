@@ -1,4 +1,4 @@
-patient_name = input('Nhập tên bệnh nhân: ').strip();
+patient_name = input('Nhập tên bệnh nhân: ');
 year_of_birth = int(input('Nhập năm sinh bệnh nhân: '));
 number_of_sick_days = int(input('Nhập số ngày bệnh: '));
 body_temperature = float(input('Nhập nhiệt độ cơ thể: '));
