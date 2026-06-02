@@ -28,7 +28,7 @@ while True:
         case "1":
             # --- CHỨC NĂNG 1: NHẬP DỮ LIỆU ĐƠN HÀNG VÀ XEM BÁO CÁO ---
             
-            # Nhập và chuẩn hóa thông tin người gửi (Bẫy 1: Không được rỗng)
+            # Nhập và chuẩn hóa thông tin người gửi
             while True:
                 name_input = input("Nhập tên người gửi: ").strip()
                 if name_input == "":
@@ -37,7 +37,7 @@ while True:
                     sender_name = name_input.title()
                     break
             
-            # Nhập SĐT người gửi kèm kiểm tra tính hợp lệ (Bẫy 1, 2, 3)
+            # Nhập SĐT người gửi kèm kiểm tra tính hợp lệ
             while True:
                 phone_input = input("Nhập số điện thoại người gửi: ").strip()
                 if phone_input == "":
