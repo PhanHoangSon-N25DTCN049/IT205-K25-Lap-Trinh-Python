@@ -1,3 +1,14 @@
+def menu():
+    print("==================================================");
+    print("      HỆ THỐNG QUẢN LÝ GIỎ HÀNG - AMAZON CLI      ");
+    print("==================================================");
+    print("  1. Xem chi tiết giỏ hàng và Tổng tiền");
+    print("  2. Thêm sản phẩm mới hoặc Tăng số lượng");
+    print("  3. Cập nhật số lượng sản phẩm");
+    print("  4. Xóa sản phẩm khỏi giỏ hàng");
+    print("  5. Thoát chương trình");
+    print("==================================================");
+
 cart_items = [
     {
         "id": "P001", 
@@ -11,119 +22,143 @@ cart_items = [
         "number": 2, 
         "price": 150000
     }
-]
+];
 
 while True:
-    print("\n--- SHOPEE CART MANAGEMENT SYSTEM ---")
-    print("1. Xem chi tiết giỏ hàng & Tính tổng tiền")
-    print("2. Thêm sản phẩm mới / Cộng dồn số lượng")
-    print("3. Cập nhật số lượng của một sản phẩm")
-    print("4. Xóa sản phẩm khỏi giỏ hàng")
-    print("5. Thoát chương trình")
-    
-    choice = input("Nhập lựa chọn của bạn (1-5): ").strip()
+    menu();
+    choice = input("Nhập lựa chọn của bạn (1-5): ").strip();
     
     match choice:
-        case '1':
-            if len(cart_items) == 0:
-                print("Giỏ hàng hiện không có sản phẩm nào.")
-            else:
-                total_count = 0
-                total_price = 0
-                
-                print(f"{'ID':<10} | {'Tên sản phẩm':<25} | {'Số lượng':<10} | {'Đơn giá':<15}")
-                print("-" * 68)
-                
-                for item in cart_items:
-                    print(f"{item['id']:<10} | {item['name']:<25} | {item['number']:<10} | {item['price']:<15}")
-                    total_count += item['number']
-                    total_price += item['number'] * item['price']
-                    
-                print("-" * 68)
-                print(f"Tổng số lượng tất cả sản phẩm: {total_count}")
-                print(f"Tổng tiền toàn bộ giỏ hàng: {total_price}")
-
-        case '2':
-            cart_id = input("Nhập mã sản phẩm: ").strip()
-            if cart_id == '':
-                print("Lỗi: Mã sản phẩm không được để trống.")
-                continue
-                
-            cart_name = input("Nhập tên sản phẩm: ").strip()
-            if cart_name == '':
-                print("Lỗi: Tên sản phẩm không được để trống.")
-                continue
+        case "5":
+            print("Đã thoát chương trình");
+            break;
             
-            number_str = input("Nhập số lượng: ").strip()
-            price_str = input("Nhập đơn giá: ").strip()
+        case "1":
+            if not cart_items:
+                print("[Thông báo: Giỏ hàng hiện đang trống!]");
+                continue;
+                
+            header = f"{'ID':<10} | {'Tên sản phẩm':<25} | {'Số lượng':<10} | {'Đơn giá':<15}";
+            print(header);
+            print("-" * len(header));
             
-            # Kiểm tra xem chuỗi có phải là số nguyên (bao gồm cả số âm) hay không
-            if not (number_str.lstrip('-').isdigit() and price_str.lstrip('-').isdigit()):
-                print("Lỗi: Số lượng và đơn giá phải là số nguyên hợp lệ.")
-                continue
+            total_count = 0;
+            total_price = 0;
             
-            cart_number = int(number_str)
-            cart_price = int(price_str)
-
-            # Bẫy 1: Xử lý số lượng và đơn giá âm/bằng 0
-            if cart_number <= 0 or cart_price < 0:
-                print("Lỗi: Số lượng phải lớn hơn 0 và đơn giá không được âm.")
-                continue
-
             for item in cart_items:
-                if cart_id == item['id']:
-                    item['number'] += cart_number
-                    print(f"Mã sản phẩm đã tồn tại. Đã cộng dồn {cart_number} vào số lượng.")
-                    break
-            else:
-                new_cart = {
+                print(f"{item['id']:<10} | {item['name']:<25} | {item['number']:<10} | {item['price']:<15}");
+                total_count += item['number'];
+                total_price += item['number'] * item['price'];
+                
+            print("-" * len(header));
+            print(f"Tổng số lượng tất cả sản phẩm: {total_count}");
+            print(f"Tổng tiền toàn bộ giỏ hàng: {total_price} VND");
+            
+        case "2":
+            while True:
+                cart_id = input("Nhập mã sản phẩm: ").strip();
+                if not cart_id:
+                    print("Mã sản phẩm không được bỏ trống!");
+                else: 
+                    break;
+            
+            while True:
+                cart_name = input("Nhập tên sản phẩm: ").strip();
+                if not cart_name:
+                    print("Tên sản phẩm không được bỏ trống!");
+                else: 
+                    break;
+            
+            while True:
+                cart_number = input("Nhập số lượng: ").strip();
+                if not cart_number:
+                    print("Số lượng không được bỏ trống!");
+                elif not cart_number.lstrip('-').isdigit(): 
+                    print("Dữ liệu nhập vào phải là số!");
+                elif int(cart_number) <= 0:
+                    print("Số lượng phải lớn hơn 0!");
+                else: 
+                    break;
+            
+            while True:
+                cart_price = input("Nhập đơn giá: ").strip();
+                if not cart_price:
+                    print("Đơn giá không được bỏ trống!");
+                elif not cart_price.lstrip('-').isdigit(): 
+                    print("Dữ liệu nhập vào phải là số!");
+                elif int(cart_price) < 0:
+                    print("Đơn giá không được âm!");
+                else: 
+                    break;
+            
+            check_exist = False;
+            for item in cart_items:
+                if cart_id == item["id"]:
+                    item["number"] += int(cart_number);
+                    print(f"Mã sản phẩm đã tồn tại. Đã cộng dồn {cart_number} vào số lượng.");
+                    check_exist = True;
+                    break;
+            
+            if not check_exist:
+                new_item = {
                     "id": cart_id,
                     "name": cart_name,
-                    "number": cart_number,
-                    "price": cart_price
-                }
-                cart_items.append(new_cart)
-                print("Đã thêm sản phẩm mới vào giỏ hàng.")
-
-        case '3':
-            cart_id = input("Nhập mã sản phẩm cần cập nhật: ").strip()
-            number_str = input("Nhập số lượng mới: ").strip()
-            
-            if not number_str.lstrip('-').isdigit():
-                print("Lỗi: Số lượng phải là số nguyên hợp lệ.")
-                continue
+                    "number": int(cart_number),
+                    "price": int(cart_price)
+                };
+                cart_items.append(new_item);
+                print("Đã thêm sản phẩm mới vào giỏ hàng thành công.");
                 
-            cart_number = int(number_str)
-            
-            if cart_number <= 0:
-                print("Lỗi: Số lượng phải lớn hơn 0.")
-                continue
+        case "3":
+            while True:
+                cart_id = input("Nhập mã sản phẩm cần cập nhật: ").strip();
+                if cart_id: 
+                    break;
+                print("Mã sản phẩm không được bỏ trống!");
                 
-            for item in cart_items:
-                if item['id'] == cart_id:
-                    item['number'] = cart_number
-                    print("Đã cập nhật số lượng thành công.")
-                    break
-            else:
-                # Bẫy 2: Cập nhật sản phẩm không tồn tại
-                print("Lỗi: Mã sản phẩm không tồn tại trong giỏ hàng.")
-
-        case '4':
-            cart_id = input("Nhập mã sản phẩm muốn xóa: ").strip()
+            temp_idx = -1;
+            for idx, item in enumerate(cart_items):
+                if cart_id == item["id"]:
+                    temp_idx = idx;
+                    break;
             
-            for item in cart_items:
-                if item['id'] == cart_id:
-                    cart_items.remove(item)
-                    print("Đã xóa hoàn toàn sản phẩm khỏi giỏ hàng.")
-                    break
-            else:
-                # Bẫy 2: Xóa sản phẩm không tồn tại
-                print("Lỗi: Mã sản phẩm không tồn tại trong giỏ hàng.")
+            if temp_idx == -1:
+                print(f"[Lỗi: Không tìm thấy mã sản phẩm {cart_id} trong giỏ hàng!]");
+                continue;
+                
+            while True:
+                new_number = input(f"Nhập số lượng mới cho {cart_id}: ").strip();
+                if not new_number:
+                    print("Số lượng không được bỏ trống!");
+                elif not new_number.lstrip('-').isdigit():
+                    print("Dữ liệu nhập vào phải là số!");
+                elif int(new_number) <= 0:
+                    print("Số lượng phải lớn hơn 0!");
+                else: 
+                    break;
+                    
+            cart_items[temp_idx]["number"] = int(new_number);
+            print(f"[Thành công]: Đã cập nhật số lượng của {cart_id} thành {new_number}.");
 
-        case '5':
-            print("Đã thoát chương trình.")
-            break
+        case "4":
+            while True:
+                cart_id = input("Nhập mã sản phẩm cần xóa: ").strip();
+                if cart_id: 
+                    break;
+                print("Mã sản phẩm không được bỏ trống!");
+                
+            temp_idx = -1;
+            for idx, item in enumerate(cart_items):
+                if cart_id == item["id"]:
+                    temp_idx = idx;
+                    break;
+            
+            if temp_idx == -1:
+                print(f"[Lỗi: Không tìm thấy mã sản phẩm {cart_id} trong giỏ hàng!]");
+                continue;
+                
+            print(f"[Thành công]: Đã xóa sản phẩm {cart_items[temp_idx]['name']} khỏi giỏ hàng.");
+            del cart_items[temp_idx];
             
         case _:
-            # Bẫy 3: Menu Validation
-            print("Lựa chọn không hợp lệ. Vui lòng chỉ nhập số từ 1 đến 5.")
+            print("Lỗi lựa chọn! Vui lòng nhập lại số từ 1 đến 5.");
