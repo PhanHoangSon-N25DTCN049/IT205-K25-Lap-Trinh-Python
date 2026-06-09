@@ -1,4 +1,3 @@
-# Khởi tạo danh sách toàn cục
 raw_logs = []
 processed_logs = []
 
@@ -64,7 +63,7 @@ def mask_ip_addresses():
     
     for log in processed_logs:
         words = log.split()
-        masked_words = []
+        masked_words = [] 
         
         for word in words:
             parts = word.split(".")
