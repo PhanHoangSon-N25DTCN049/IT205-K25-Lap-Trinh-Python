@@ -20,7 +20,7 @@ def check_input_str (msg_input):
     while True:
         user_input = input(f"{msg_input}").strip();
         if user_input:
-            return;
+            return user_input;
         print("Không được bỏ trống");
             
             
@@ -57,9 +57,9 @@ def update_quantity(inventory_list):
     key = check_input_str("Nhập mã hàng hóa cần sửa:");
     key_idx = -1
     for idx, item in enumerate(inventory_list):
-        if item["id"] == key:
+        if item['id'] == key:
             key_idx = idx;
-            print("đã tìm thấy");
+            
             break;
     if key_idx != -1:
         print(f"tìm thấy hàng hóa: {inventory_list[key_idx]["name"]}");
