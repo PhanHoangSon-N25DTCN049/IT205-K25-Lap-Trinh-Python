@@ -57,12 +57,16 @@ def update_quantity(inventory_list):
     key = check_input_str("Nhập mã hàng hóa cần sửa:");
     key_idx = -1
     for idx, item in enumerate(inventory_list):
-        if item['id'] == key:
+        if item['id'].lower() == key.lower():
             key_idx = idx;
-            
             break;
     if key_idx != -1:
-        print(f"tìm thấy hàng hóa: {inventory_list[key_idx]["name"]}");
+        print(f"tìm thấy hàng hóa: {inventory_list[key_idx]["name"]} (Số lượng hiện tại: {inventory_list[key_idx]["quantity"]})");
+        inventory_list[key_idx]["quantity"] = check_input_int("Nhập số lượng mới");
+        print("Cập nhật số lượng thành công");
+        return;
+    print(f"Không tìm thấy hàng hóa có mã {key}")
+        
 def main():
     while True:
         print("====================================");
