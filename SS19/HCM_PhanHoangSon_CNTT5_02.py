@@ -174,7 +174,7 @@ def main():
               """)
         choice = input("Nhập lựa chọn của bạn(1->8): ");
         match choice:
-            case "8":
+            case "7":
                 print("Kết thúc chương trình! cám ơn bạn vì đã sử dụng");
                 break;
             case "1":
