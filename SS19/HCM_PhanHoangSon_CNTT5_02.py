@@ -90,8 +90,7 @@ def add_product(products):
         'total_price': price*quantity,
         'status': status
     }
-    products.append
-    (new_product);
+    products.append(new_product);
     print("Thêm sản phẩm thành công");
     
 def update_product(products):
