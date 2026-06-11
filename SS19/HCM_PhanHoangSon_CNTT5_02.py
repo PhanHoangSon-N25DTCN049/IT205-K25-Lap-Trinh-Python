@@ -94,7 +94,7 @@ def add_product(products):
     print("Thêm sản phẩm thành công");
     
 def update_product(products):
-    key = check_input_str("Nhập mã sản phẩm cần cập nhật");
+    key = check_input_str("Nhập mã sản phẩm cần cập nhật: ");
     idx_key = check_duplication(products, key);
     if idx_key != -1:
         print(f"--- Cập nhật sản phẩm {products[idx_key]['name']} ---")
@@ -112,7 +112,7 @@ def update_product(products):
         print(f"Không tìm thấy sản phẩm có mã: {key}");
 
 def del_product(products):
-    key = check_input_str("Nhập mã sản phẩm cần xóa");
+    key = check_input_str("Nhập mã sản phẩm cần xóa: ");
     idx_key = check_duplication(products, key);
     if idx_key != -1:
         choice_del = check_input_str(f"Bạn có chắc chắn muốn xóa sản phẩm {products[idx_key]['name']} khỏi danh mục không (Y/N):")
@@ -174,7 +174,7 @@ def main():
         choice = input("Nhập lựa chọn của bạn(1->8): ");
         match choice:
             case "7":
-                print("Kết thúc chương trình! cám ơn bạn vì đã sử dụng");
+                print("Kết thúc chương trình!\n cám ơn bạn vì đã sử dụng");
                 break;
             case "1":
                 display_product(products);
