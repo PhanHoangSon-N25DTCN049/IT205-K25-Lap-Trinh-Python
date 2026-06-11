@@ -56,6 +56,7 @@ def check_duplication (products,key:str):
             return idx;
     return -1;
 
+#Phân loại trạng thái tự động
 def update_status (quantity, min_quantity):
     if quantity == 0:
         return "Hết hàng";
@@ -168,8 +169,7 @@ def main():
 4. xóa sản phẩm khỏi danh mục
 5. tìm kiếm sản phẩm theo id hoặc tên
 6. Thống kê trạng thái kho hàng
-7. Phân loại kho tự động
-8. Thoát chương trình 
+7. Thoát chương trình 
 ===================================
               """)
         choice = input("Nhập lựa chọn của bạn(1->8): ");
@@ -189,8 +189,6 @@ def main():
                 search_product(products);
             case "6":
                 status_statistics(products);
-            case "7":
-                print("7");
             case _:
                 print("Lỗi lựa chọn vui lòng chọn lại!");
     
