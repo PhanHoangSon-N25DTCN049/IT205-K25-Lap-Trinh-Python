@@ -13,12 +13,12 @@ def display_product (products):
         print("Chưa có sản phẩm nào!");
         return;
     print("--- Danh sách sản phẩm ---");
-    header = f"{"Mã SP":<6} | {"Tên sản phẩm":<20} | {'Đơn giá':<10} | {'Số lượng':<10} | {'tối thiểu':<10} | {'giá trị':<10} | {'Trạng thái':<7}";
+    header = f"{"Mã SP":<6} | {"Tên sản phẩm":<20} | {'Đơn giá':<10} | {'Số lượng':<10} | {'tối thiểu':<10} | {'giá trị':<10} | {'Trạng thái':<25}";
     print(header)
     print("-"*len(header));
     
     for item in products:
-        print(f"{item['id']:<6} | {item['name']:<20} | {item['price']:<10} | {item['quantity']:<10} | {item['minimum_quantity']:<10} | {item['total_price']:<10} | {item['status']:<7}");
+        print(f"{item['id']:<6} | {item['name']:<20} | {item['price']:<10} | {item['quantity']:<10} | {item['minimum_quantity']:<10} | {item['total_price']:<10} | {item['status']:<25}");
     print("-"*len(header));
     
 def check_input_str(msg : str):
@@ -128,7 +128,7 @@ def search_product(products):
     item = [item for item in products if key.lower() in item["name"].lower()];
     
     if idx_key != -1:
-        print(f"{products[idx_key]['id']:<6} | {products[idx_key]['name']:<20} | {products[idx_key]['price']:<10} | {products[idx_key]['quantity']:<10} | {products[idx_key]['minimum_quantity']:<10} | {products[idx_key]['total_price']:<10} | {products[idx_key]['status']:<7}");
+        print(f"{products[idx_key]['id']:<6} | {products[idx_key]['name']:<20} | {products[idx_key]['price']:<10} | {products[idx_key]['quantity']:<10} | {products[idx_key]['minimum_quantity']:<10} | {products[idx_key]['total_price']:<10} | {products[idx_key]['status']:<25}");
     elif item:
         display_product(item);
     else:
