@@ -1,6 +1,6 @@
 import logging
 
-# Cấu hình logging hệ thống hiển thị đầy đủ từ mức INFO trở đi theo yêu cầu 1
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(levelname)s: %(message)s"

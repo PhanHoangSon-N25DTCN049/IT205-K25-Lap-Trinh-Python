@@ -2,30 +2,6 @@ import math
 import os
 from datetime import datetime
 
-"""
-1. Tác hại của việc sử dụng 'from datetime import *':
-   - Gây ô nhiễm không gian tên (Namespace Pollution): Nạp rất nhiều class không cần thiết trực tiếp vào global namespace.
-   - Xung đột tên (Name Collision): Nếu hệ thống đang có biến toàn cục 'time = 120', lệnh import này sẽ được thực thi 
-     và ghi đè hoàn toàn biến cũ bằng class 'datetime.time'. Khi chương trình gọi lại biến 'time' để tính toán, 
-     Python sẽ báo lỗi 'TypeError' vì không thể thực hiện phép toán trên một class, gây sập hệ thống.
-
-2. Hàm tối ưu hơn os.mkdir():
-   - Đó là hàm 'os.makedirs(path, exist_ok=True)'.
-   - Ưu điểm: Cho phép tạo các thư mục lồng nhau dạng cây (ví dụ: media_vault/2026/video). Tham số 'exist_ok=True' 
-     giúp bỏ qua lỗi 'FileExistsError' một cách an toàn nếu thư mục đã tồn tại trước đó, không cần check if-else thủ công.
-
-3. Sơ đồ cấu trúc cây thư mục (Folder Tree) nếu tách file theo Package:
-   rikkei_media/
-   ├── storage/
-   │   ├── __init__.py
-   │   ├── disk_manager.py
-   │   └── io_helper.py
-   ├── analytics/
-   │   ├── __init__.py
-   │   └── time_validator.py
-   └── main.py
-"""
-
 
 # --- Mô phỏng storage/disk_manager.py ---
 def calculate_disk_blocks(size_bytes, block_size=4096):
