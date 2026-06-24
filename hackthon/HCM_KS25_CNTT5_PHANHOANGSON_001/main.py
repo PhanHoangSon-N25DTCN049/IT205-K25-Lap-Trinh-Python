@@ -29,7 +29,6 @@ class PlayerManager(Player):
         self.players = []
     
     def show_all(self, list_player):
-        
         header = f"{"ID":<5} | {"Name":<15} | {"Tốc độ":<10} | {"Kĩ thuật":<10} | {"Ghi bàn":<10} | {"Điểm Phong độ":<13} | {"Phân loại":<10}"
         print("===================== Danh sách cầu thủ =====================")
         print("-"*len(header))
@@ -101,14 +100,12 @@ def main():
         
         match choice_main:
             case "1":
+                if Players.players == []:
+                    print("Chưa có cầu thủ nào!")
+                    continue
                 Players.show_all(Players.players)
             case "2":
-                while True:
-                    id = input("Nhập Mã cầu thủ: ")
-                    if PlayerManager.check_id(id) != -1:
-                        print("ID đã tồn tại vui lòng nhập lại");
-                        continue
-                    break
+                id = input("Nhập Mã cầu thủ: ")
                 while True:
                     name = input("Nhập tên cầu thủ: ")
                     if name.strip():
@@ -120,6 +117,9 @@ def main():
                 goad_score = float(input("Nhập điểm ghi bàn: "))
                 Players.add_player(id, name, speed_score, technique_score, goad_score)
             case "3":
+                if Players.players == []:
+                    print("Chưa có cầu thủ nào!")
+                    continue
                 key = input("Nhập vào ID cầu thủ cần chỉnh sửa: ")
                 idx = Players.check_id(key)
                 if idx == -1:
@@ -127,6 +127,9 @@ def main():
                     continue
                 Players.update_player(idx)
             case "4":
+                if Players.players == []:
+                    print("Chưa có cầu thủ nào!")
+                    continue
                 key = input("Nhập vào ID cầu thủ cần xóa: ")
                 idx = Players.check_id(key)
                 if idx == -1:
@@ -134,6 +137,9 @@ def main():
                     continue
                 Players.delete_player(idx)
             case "5":
+                if Players.players == []:
+                    print("Chưa có cầu thủ nào!")
+                    continue
                 key = input("Nhập tên cầu thủ cần tìm: ")
                 Players.search_player(key)
 if __name__ == "__main__":
